@@ -23,11 +23,11 @@ export default function loader() {}
 export function pitch(request) {
   const options = loaderUtils.getOptions(this) || {};
 
-  validateOptions({ name: 'Worker Loader', schema, target: options });
+  validateOptions({ name: 'Awesome Worker Loader', schema, target: options });
 
   if (!this.webpack) {
     throw new WorkerLoaderError({
-      name: 'Worker Loader',
+      name: 'Awesome Worker Loader',
       message: 'This loader is only usable with webpack',
     });
   }
