@@ -15,6 +15,9 @@
 
 worker loader module for webpack
 
+Forked from [worker-loader](https://github.com/webpack-contrib/worker-loader) due to repository inactivity.
+Added shared worker functionality.
+
 ## Requirements
 
 This module requires a minimum of Node v6.9.0 and Webpack v4.0.0.
@@ -65,6 +68,22 @@ worker.addEventListener("message", function (event) {});
 And run `webpack` via your preferred method.
 
 ## Options
+
+### `type`
+
+Type: `string`
+Default: `dedicated`
+Values: `dedicated` | `shared`
+
+Use a different worker type, i.e 'shared'
+
+```js
+// webpack.config.js
+{
+  loader: 'worker-loader',
+  options: { type: 'shared' }
+}
+```
 
 ### `fallback`
 
