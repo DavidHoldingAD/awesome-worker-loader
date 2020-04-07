@@ -1,12 +1,12 @@
 {
-  "name": "worker-loader",
+  "name": "awesome-worker-loader",
   "version": "2.0.1",
   "description": "worker loader module for webpack",
   "license": "MIT",
-  "repository": "webpack-contrib/worker-loader",
-  "author": "Tobias Koppers @sokra",
-  "homepage": "https://github.com/webpack-contrib/worker-loader",
-  "bugs": "https://github.com/webpack-contrib/worker-loader/issues",
+  "repository": "steneva/worker-loader",
+  "author": "Svetlana Teneva @steneva",
+  "homepage": "https://github.com/steneva/awesome-worker-loader",
+  "bugs": "https://github.com/steneva/awesome-worker-loader/issues",
   "bin": "",
   "main": "dist/cjs.js",
   "engines": {
