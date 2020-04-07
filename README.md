@@ -11,7 +11,7 @@
 [![chat][chat]][chat-url]
 [![size][size]][size-url]
 
-# worker-loader
+# Awesome worker-loader
 
 worker loader module for webpack
 
@@ -24,17 +24,17 @@ This module requires a minimum of Node v6.9.0 and Webpack v4.0.0.
 
 ## Getting Started
 
-To begin, you'll need to install `worker-loader`:
+To begin, you'll need to install `awesome-worker-loader`:
 
 ```console
-$ npm install worker-loader --save-dev
+$ npm install awesome-worker-loader --save-dev
 ```
 
 ### Inlined
 
 ```js
 // App.js
-import Worker from 'worker-loader!./Worker.js';
+import Worker from 'awesome-worker-loader!./Worker.js';
 ```
 
 ### Config
@@ -46,7 +46,7 @@ import Worker from 'worker-loader!./Worker.js';
     rules: [
       {
         test: /\.worker\.js$/,
-        use: { loader: 'worker-loader' }
+        use: { loader: 'awesome-worker-loader' }
       }
     ]
   }
@@ -80,7 +80,7 @@ Use a different worker type, i.e 'shared'
 ```js
 // webpack.config.js
 {
-  loader: 'worker-loader',
+  loader: 'awesome-worker-loader',
   options: { type: 'shared' }
 }
 ```
@@ -95,7 +95,7 @@ Require a fallback for non-worker supporting environments
 ```js
 // webpack.config.js
 {
-  loader: 'worker-loader',
+  loader: 'awesome-worker-loader',
   options: { fallback: false }
 }
 ```
@@ -110,7 +110,7 @@ You can also inline the worker as a BLOB with the `inline` parameter
 ```js
 // webpack.config.js
 {
-  loader: 'worker-loader',
+  loader: 'awesome-worker-loader',
   options: { inline: true }
 }
 ```
@@ -122,7 +122,7 @@ inline workers, to disable this behavior just set `fallback` parameter as
 ```js
 // webpack.config.js
 {
-  loader: 'worker-loader',
+  loader: 'awesome-worker-loader',
   options: { inline: true, fallback: false }
 }
 ```
@@ -139,7 +139,7 @@ hash for caching purposes. When using `name` alone `[hash]` is omitted.
 ```js
 // webpack.config.js
 {
-  loader: 'worker-loader',
+  loader: 'awesome-worker-loader',
   options: { name: 'WorkerName.[hash].js' }
 }
 ```
@@ -155,7 +155,7 @@ the same public path used for other webpack assets is used.
 ```js
 // webpack.config.js
 {
-  loader: 'worker-loader',
+  loader: 'awesome-worker-loader',
   options: { publicPath: '/scripts/workers/' }
 }
 ```
@@ -258,7 +258,7 @@ import Worker from './file.worker.js';
 ```js
 // webpack.config.js
 {
-  loader: 'worker-loader',
+  loader: 'awesome-worker-loader',
   options: { inline: true }
 }
 ```
@@ -275,7 +275,7 @@ import Worker from './file.worker.js';
 ```js
 // webpack.config.js
 {
-  loader: 'worker-loader',
+  loader: 'awesome-worker-loader',
   options: { publicPath: '/workers/' }
 }
 ```
@@ -290,23 +290,23 @@ Please take a moment to read our contributing guidelines if you haven't yet done
 
 #### [MIT](./LICENSE)
 
-[npm]: https://img.shields.io/npm/v/worker-loader.svg
-[npm-url]: https://npmjs.com/package/worker-loader
+[npm]: https://img.shields.io/npm/v/awesome-worker-loader.svg
+[npm-url]: https://npmjs.com/package/awesome-worker-loader
 
-[node]: https://img.shields.io/node/v/worker-loader.svg
+[node]: https://img.shields.io/node/v/awesome-worker-loader.svg
 [node-url]: https://nodejs.org
 
-[deps]: https://david-dm.org/webpack-contrib/worker-loader.svg
-[deps-url]: https://david-dm.org/webpack-contrib/worker-loader
+[deps]: https://david-dm.org/steneva/awesome-worker-loader.svg
+[deps-url]: https://david-dm.org/steneva/awesome-worker-loader
 
-[tests]: 	https://img.shields.io/circleci/project/github/webpack-contrib/worker-loader.svg
-[tests-url]: https://circleci.com/gh/webpack-contrib/worker-loader
+[tests]: 	https://img.shields.io/circleci/project/github/steneva/awesome-worker-loader.svg
+[tests-url]: https://circleci.com/gh/steneva/awesome-worker-loader
 
-[cover]: https://codecov.io/gh/webpack-contrib/worker-loader/branch/master/graph/badge.svg
+[cover]: https://codecov.io/gh/steneva/awesome-worker-loader/branch/master/graph/badge.svg
 [cover-url]: https://codecov.io/gh/webpack-contrib/worker-loader
 
 [chat]: https://img.shields.io/badge/gitter-webpack%2Fwebpack-brightgreen.svg
 [chat-url]: https://gitter.im/webpack/webpack
 
-[size]: https://packagephobia.now.sh/badge?p=worker-loader
-[size-url]: https://packagephobia.now.sh/result?p=worker-loader
+[size]: https://packagephobia.now.sh/badge?p=awesome-worker-loader
+[size-url]: https://packagephobia.now.sh/result?p=awesome-worker-loader

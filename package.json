@@ -3,7 +3,7 @@
   "version": "2.0.1",
   "description": "worker loader module for webpack",
   "license": "MIT",
-  "repository": "steneva/worker-loader",
+  "repository": "steneva/awesome-worker-loader",
   "author": "Svetlana Teneva @steneva",
   "homepage": "https://github.com/steneva/awesome-worker-loader",
   "bugs": "https://github.com/steneva/awesome-worker-loader/issues",
