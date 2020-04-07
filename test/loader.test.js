@@ -8,12 +8,15 @@
   array-bracket-spacing,
 */
 import fs from 'fs';
+import path from 'path';
 import assert from 'assert';
 import webpack from './helpers/compiler';
+import { getWorkerConstructorName } from '../src/utils';
 
 process.chdir(__dirname);
 
-const readFile = (file) => fs.readFileSync(file, 'utf-8');
+const readFile = (file) => fs.readFileSync(path.join(__dirname, file), 'utf-8');
+const readDirectory = (directory) => fs.readdirSync(path.join(__dirname, directory));
 
 test('should create chunk with worker', () =>
   webpack('worker').then((stats) => {
@@ -162,7 +165,7 @@ test('should not add fallback chunks with inline and fallback === false', () =>
 
     assert(file);
 
-    assert.equal(fs.readdirSync('__expected__/no-fallbacks').length, 1);
+    assert.equal(readDirectory('__expected__/no-fallbacks').length, 1);
 
     assert.notEqual(
       readFile(file).indexOf('// w1 inlined without fallback'),
@@ -173,6 +176,30 @@ test('should not add fallback chunks with inline and fallback === false', () =>
       -1
     );
   }));
+
+[
+  'dedicated',
+  'shared',
+  undefined
+].forEach((target) => {
+  test('should use the type option to create the right type of worker', () =>
+    webpack('type-options', {
+      loader: {
+        options: {
+          type: target,
+        },
+      },
+    }).then((stats) => {
+      const assets = stats.compilation.assets;
+      const workerConstructorName = getWorkerConstructorName(target);
+
+      const bundle = assets['bundle.js'];
+
+      expect(bundle.source()).toContain(
+        `new ${workerConstructorName}(`
+      );
+    }));
+});
 
 test('should use the publicPath option as the base URL if specified', () =>
   webpack('public-path-override', {

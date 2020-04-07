@@ -7,11 +7,11 @@ This loader is only usable with webpack
 "
 `;
 
-exports[`Errors Validation Error 1`] = `
+exports[`Errors Options Validation Error 1`] = `
 "Worker Loader
 
   [4mOptions Validation Error[24m
 
-  [2moptions[22m.name  [34mshould be string[39m
+  [2moptions[22m.name  [94mshould be string[39m
 "
 `;

@@ -7,7 +7,7 @@ describe('Errors', () => {
     expect(fn).toThrowErrorMatchingSnapshot();
   });
 
-  test('Validation Error', () => {
+  test('Options Validation Error', () => {
     const fn = () => pitch.call({ query: { name: 1 } });
 
     expect(fn).toThrowErrorMatchingSnapshot();

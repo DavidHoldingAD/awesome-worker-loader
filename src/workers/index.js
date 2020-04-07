@@ -1,5 +1,6 @@
 /* eslint-disable multiline-ternary */
 import path from 'path';
+import { getWorkerConstructorName } from '../utils';
 
 const getWorker = (file, content, options) => {
   const publicPath = options.publicPath
@@ -21,7 +22,9 @@ const getWorker = (file, content, options) => {
     )}, ${fallbackWorkerPath})`;
   }
 
-  return `new Worker(${publicWorkerPath})`;
+  const workerConstructorName = getWorkerConstructorName(options.type);
+
+  return `new ${workerConstructorName}(${publicWorkerPath})`;
 };
 
 export default getWorker;
