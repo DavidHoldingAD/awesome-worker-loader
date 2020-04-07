@@ -11,7 +11,7 @@
 [![chat][chat]][chat-url]
 [![size][size]][size-url]
 
-# Awesome worker-loader
+# awesome-worker-loader
 
 worker loader module for webpack
 
