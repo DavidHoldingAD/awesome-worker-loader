@@ -6,12 +6,3 @@ exports[`Errors Loader Error 1`] = `
 This loader is only usable with webpack
 "
 `;
-
-exports[`Errors Options Validation Error 1`] = `
-"Awesome Worker Loader
-
-  [4mOptions Validation Error[24m
-
-  [2moptions[22m.name  [94mshould be string[39m
-"
-`;

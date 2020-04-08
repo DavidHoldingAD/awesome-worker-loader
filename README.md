@@ -8,7 +8,6 @@
 [![node][node]][node-url]
 [![deps][deps]][deps-url]
 [![tests][tests]][tests-url]
-[![chat][chat]][chat-url]
 [![size][size]][size-url]
 
 # awesome-worker-loader
@@ -299,14 +298,11 @@ Please take a moment to read our contributing guidelines if you haven't yet done
 [deps]: https://david-dm.org/steneva/awesome-worker-loader.svg
 [deps-url]: https://david-dm.org/steneva/awesome-worker-loader
 
-[tests]: 	https://img.shields.io/circleci/project/github/steneva/awesome-worker-loader.svg
-[tests-url]: https://circleci.com/gh/steneva/awesome-worker-loader
+[tests]: 	https://github.com/steneva/awesome-worker-loader/workflows/test/badge.svg
+[tests-url]: https://github.com/steneva/awesome-worker-loader/actions
 
 [cover]: https://codecov.io/gh/steneva/awesome-worker-loader/branch/master/graph/badge.svg
 [cover-url]: https://codecov.io/gh/webpack-contrib/worker-loader
-
-[chat]: https://img.shields.io/badge/gitter-webpack%2Fwebpack-brightgreen.svg
-[chat-url]: https://gitter.im/webpack/webpack
 
 [size]: https://packagephobia.now.sh/badge?p=awesome-worker-loader
 [size-url]: https://packagephobia.now.sh/result?p=awesome-worker-loader

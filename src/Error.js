@@ -1,4 +1,4 @@
-class WorkerLoaderError extends Error {
+class AwesomeWorkerLoaderError extends Error {
   constructor(err) {
     super(err);
 
@@ -8,4 +8,4 @@ class WorkerLoaderError extends Error {
   }
 }
 
-export default WorkerLoaderError;
+export default AwesomeWorkerLoaderError;

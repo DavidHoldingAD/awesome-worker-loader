@@ -1,0 +1,33 @@
+name: test
+
+on: [push]
+
+env:
+  buildOutputDir: dist
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@v2
+
+      - id: install-packages
+        name: Install packages
+        run: npm install
+
+      - id: setup-node
+        name: Setup node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - id: run-tests
+        name: Run tests
+        run: npm test

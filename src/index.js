@@ -16,7 +16,7 @@ import SingleEntryPlugin from 'webpack/lib/SingleEntryPlugin';
 import WebWorkerTemplatePlugin from 'webpack/lib/webworker/WebWorkerTemplatePlugin';
 
 import getWorker from './workers/';
-import WorkerLoaderError from './Error';
+import AwesomeWorkerLoaderError from './Error';
 
 export default function loader() {}
 
@@ -26,7 +26,7 @@ export function pitch(request) {
   validateOptions({ name: 'Awesome Worker Loader', schema, target: options });
 
   if (!this.webpack) {
-    throw new WorkerLoaderError({
+    throw new AwesomeWorkerLoaderError({
       name: 'Awesome Worker Loader',
       message: 'This loader is only usable with webpack',
     });

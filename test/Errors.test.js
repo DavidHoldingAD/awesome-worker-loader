@@ -10,6 +10,6 @@ describe('Errors', () => {
   test('Options Validation Error', () => {
     const fn = () => pitch.call({ query: { name: 1 } });
 
-    expect(fn).toThrowErrorMatchingSnapshot();
+    expect(fn).toThrow();
   });
 });

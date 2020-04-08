@@ -3,14 +3,11 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "entry",
+        "useBuiltIns": "usage",
+        "corejs": 3,
         "targets": {
           "node": "6.9.0"
-        },
-        "exclude": [
-          "transform-async-to-generator",
-          "transform-regenerator"
-        ]
+        }
       }
     ]
   ],
@@ -18,7 +15,7 @@
     [
       "@babel/plugin-proposal-object-rest-spread",
       {
-        "useBuiltIns": "entry"
+        "useBuiltIns": "usage"
       }
     ]
   ],
