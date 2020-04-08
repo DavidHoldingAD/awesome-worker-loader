@@ -1,12 +1,11 @@
 name: release
 
 on:
-  push:
+  pull_request:
     branches:
       - master
 
 env:
-  NODE_ENV: production
   buildOutputDir: dist
   archiveName: awesome-worker-loader.zip
 
@@ -35,6 +34,7 @@ jobs:
         name: Compile source
         run: npm run build -- -d ${{ env.buildOutputDir }}
         env:
+          NODE_ENV: production
           CI: true
 
       - id: archive-files
