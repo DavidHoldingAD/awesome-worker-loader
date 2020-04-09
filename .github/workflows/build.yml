@@ -32,7 +32,7 @@ jobs:
       - id: archive-files
         name: Archive files
         run: |
-          zip ${{ env.archiveName }} ${{ env.buildOutputDir }}
+          zip -r ${{ env.archiveName }} ${{ env.buildOutputDir }}
 
       - id: upload-artifact
         name: Upload artifact
