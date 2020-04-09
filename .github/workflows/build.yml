@@ -7,7 +7,7 @@ on:
 
 env:
   buildOutputDir: dist
-  archiveName: awesome-worker-loader.zip
+  archiveName: awesome-worker-loader
 
 jobs:
   build-and-zip:
@@ -32,11 +32,12 @@ jobs:
       - id: archive-files
         name: Archive files
         run: |
-          zip -r ${{ env.archiveName }} ${{ env.buildOutputDir }}
+          cd ${{ env.buildOutputDir }}
+          zip -r ../${{ env.archiveName }} .
 
       - id: upload-artifact
         name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
           name: ${{ env.archiveName }}
-          path: ${{ env.archiveName }}
+          path: ${{ env.archiveName.zip }}
