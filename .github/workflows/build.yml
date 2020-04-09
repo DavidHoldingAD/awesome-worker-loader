@@ -40,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: ${{ env.archiveName }}
-          path: ${{ env.archiveName.zip }}
+          path: ${{ env.archiveName }}.zip
