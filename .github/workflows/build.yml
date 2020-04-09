@@ -1,0 +1,42 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  buildOutputDir: dist
+  archiveName: awesome-worker-loader.zip
+
+jobs:
+  build-and-zip:
+    runs-on: ubuntu-latest
+
+    steps:
+      - id: checkout-repository
+        name: Checkout repository
+        uses: actions/checkout@v2
+
+      - id: install-packages
+        name: Install packages
+        run: npm install
+
+      - id: compile-source
+        name: Compile source
+        run: npm run build -- -d ${{ env.buildOutputDir }}
+        env:
+          NODE_ENV: production
+          CI: true
+
+      - id: archive-files
+        name: Archive files
+        run: |
+          zip ${{ env.archiveName }} ${{ env.buildOutputDir }}
+
+      - id: upload-artifact
+        name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ env.archiveName }}
+          path: ${{ env.archiveName }}
