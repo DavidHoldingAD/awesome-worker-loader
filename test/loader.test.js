@@ -53,10 +53,10 @@ test('should create chunk with specified name in query', () =>
 test('should use regexp from options', () =>
   webpack('regexp-options', {
     loader: {
-      test: /(test1|test2)\.worker\.js$/,
+      test: /([^\\\\]+)\.worker\.js$/,
       options: {
         name: '[1].js',
-        regExp: /(test1|test2)\.worker\.js$/
+        regExp: /([^\\\\]+)\.worker\.js$/
       },
     },
   }).then((stats) => {
