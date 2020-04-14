@@ -15,7 +15,8 @@
 worker loader module for webpack
 
 Forked from [worker-loader](https://github.com/webpack-contrib/worker-loader) due to repository inactivity.
-Added shared worker functionality.
+
+Added shared and service worker support.
 
 ## Requirements
 
@@ -72,7 +73,7 @@ And run `webpack` via your preferred method.
 
 Type: `string`
 Default: `dedicated`
-Values: `dedicated` | `shared`
+Values: `dedicated` | `shared` | `service`
 
 Use a different worker type, i.e 'shared'
 
