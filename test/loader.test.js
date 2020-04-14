@@ -50,6 +50,29 @@ test('should create chunk with specified name in query', () =>
     );
   }));
 
+test('should use regexp from options', () =>
+  webpack('regexp-options', {
+    loader: {
+      test: /(test1|test2)\.worker\.js$/,
+      options: {
+        name: '[1].js',
+        regExp: /(test1|test2)\.worker\.js$/
+      },
+    },
+  }).then((stats) => {
+    const files = stats
+      .toJson()
+      .children.map((item) => item.chunks)
+      .reduce((acc, item) => acc.concat(item), [])
+      .map((item) => item.files)
+      .map((item) => `__expected__/regexp-options/${item}`)
+      .sort();
+
+    assert.equal(files.length, 2);
+    assert.equal(files[0], '__expected__/regexp-options/test1.js');
+    assert.equal(files[1], '__expected__/regexp-options/test2.js');
+  }));
+
 test('should create named chunks with workers via options', () =>
   webpack('name-options', {
     loader: {
