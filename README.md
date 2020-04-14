@@ -69,6 +69,26 @@ And run `webpack` via your preferred method.
 
 ## Options
 
+### `regExp`
+
+Type: `RegExp`
+Default: `undefined`
+
+The regular expression to match if, for instance, you want to use the n-th matched placeholder.
+
+```js
+// webpack.config.js
+{
+  loader: 'awesome-worker-loader',
+  options: {
+      name: '[1].js',
+      regExp: /(worker1|worker2)\.worker\.js$/
+  },
+}
+```
+
+This will result in the name of the output script being "worker1.js" or "worker2.js" (whichever is matched);
+
 ### `type`
 
 Type: `string`
