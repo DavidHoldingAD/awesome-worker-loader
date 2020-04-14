@@ -18,6 +18,8 @@ import WebWorkerTemplatePlugin from 'webpack/lib/webworker/WebWorkerTemplatePlug
 import getWorker, { WORKER_TYPES } from './workers/';
 import AwesomeWorkerLoaderError from './Error';
 
+import path from 'path';
+
 export default function loader() { }
 
 export function pitch(request) {
@@ -43,7 +45,7 @@ export function pitch(request) {
 
   const cb = this.async();
 
-  const filename = loaderUtils.interpolateName(
+  let filename = loaderUtils.interpolateName(
     this,
     options.name || '[hash].worker.js',
     {
@@ -52,9 +54,7 @@ export function pitch(request) {
     }
   );
 
-  if (filename.indexOf('\\') > -1) {
-    filename = filename.split('\\').lastItem;
-  }
+  filename = path.basename(filename);
 
   const worker = {};
 
