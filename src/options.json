@@ -4,6 +4,9 @@
     "name": {
       "type": "string"
     },
+    "regExp": {
+      "instanceof": "RegExp"
+    },
     "inline": {
       "type": "boolean"
     },
@@ -13,7 +16,7 @@
     "publicPath": {
       "type": "string"
     },
-    "type":{
+    "type": {
       "type": "string"
     }
   },
