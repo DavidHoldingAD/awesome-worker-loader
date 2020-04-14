@@ -1,8 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Errors Loader Error 1`] = `
-"Awesome Worker Loader
-
-This loader is only usable with webpack
-"
-`;
+exports[`Errors Loader Error 1`] = `"This loader is only usable with webpack"`;

@@ -1,9 +1,8 @@
 class AwesomeWorkerLoaderError extends Error {
-  constructor(err) {
-    super(err);
+  constructor(message) {
+    super(message);
 
-    this.name = err.name || 'Loader Error';
-    this.message = `${err.name}\n\n${err.message}\n`;
+    this.name = 'Awesome Worker Loader Error';
     this.stack = false;
   }
 }

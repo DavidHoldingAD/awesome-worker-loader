@@ -11,12 +11,13 @@ import fs from 'fs';
 import path from 'path';
 import assert from 'assert';
 import webpack from './helpers/compiler';
-import { getWorkerConstructorName } from '../src/utils';
+import { WORKER_TYPES } from '../src/workers';
 
 process.chdir(__dirname);
 
 const readFile = (file) => fs.readFileSync(path.join(__dirname, file), 'utf-8');
-const readDirectory = (directory) => fs.readdirSync(path.join(__dirname, directory));
+const readDirectory = (directory) =>
+  fs.readdirSync(path.join(__dirname, directory));
 
 test('should create chunk with worker', () =>
   webpack('worker').then((stats) => {
@@ -178,26 +179,41 @@ test('should not add fallback chunks with inline and fallback === false', () =>
   }));
 
 [
-  'dedicated',
-  'shared',
-  undefined
-].forEach((target) => {
+  WORKER_TYPES.DEDICATED,
+  WORKER_TYPES.SHARED,
+  WORKER_TYPES.SERVICE,
+  undefined,
+].forEach((type) => {
   test('should use the type option to create the right type of worker', () =>
     webpack('type-options', {
       loader: {
         options: {
-          type: target,
+          type,
         },
       },
     }).then((stats) => {
       const assets = stats.compilation.assets;
-      const workerConstructorName = getWorkerConstructorName(target);
 
       const bundle = assets['bundle.js'];
 
-      expect(bundle.source()).toContain(
-        `new ${workerConstructorName}(`
-      );
+      let expectedSubstring;
+      switch (type) {
+        case WORKER_TYPES.SERVICE: {
+          expectedSubstring = 'navigator.serviceWorker.register';
+          break;
+        }
+        case WORKER_TYPES.SHARED: {
+          expectedSubstring = 'new SharedWorker';
+          break;
+        }
+        case WORKER_TYPES.DEDICATED:
+        default: {
+          expectedSubstring = 'new Worker';
+          break;
+        }
+      }
+
+      expect(bundle.source()).toContain(expectedSubstring);
     }));
 });
 

@@ -15,7 +15,7 @@ import NodeTargetPlugin from 'webpack/lib/node/NodeTargetPlugin';
 import SingleEntryPlugin from 'webpack/lib/SingleEntryPlugin';
 import WebWorkerTemplatePlugin from 'webpack/lib/webworker/WebWorkerTemplatePlugin';
 
-import getWorker from './workers/';
+import getWorker, { WORKER_TYPES } from './workers/';
 import AwesomeWorkerLoaderError from './Error';
 
 export default function loader() {}
@@ -25,11 +25,18 @@ export function pitch(request) {
 
   validateOptions({ name: 'Awesome Worker Loader', schema, target: options });
 
+  if (options.inline && options.type) {
+    if (options.type !== WORKER_TYPES.DEDICATED) {
+      throw new AwesomeWorkerLoaderError(
+        `Cannot inline ${options.type} worker.`
+      );
+    }
+  }
+
   if (!this.webpack) {
-    throw new AwesomeWorkerLoaderError({
-      name: 'Awesome Worker Loader',
-      message: 'This loader is only usable with webpack',
-    });
+    throw new AwesomeWorkerLoaderError(
+      'This loader is only usable with webpack'
+    );
   }
 
   this.cacheable(false);
@@ -108,7 +115,7 @@ export function pitch(request) {
 
       return cb(
         null,
-        `module.exports = function() {\n  return ${worker.factory};\n};`
+        `module.exports = function(options) {\n  return ${worker.factory};\n};`
       );
     }
 
