@@ -1,6 +1,6 @@
 {
   "name": "awesome-worker-loader",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "worker loader module for webpack",
   "license": "MIT",
   "repository": "steneva/awesome-worker-loader",
